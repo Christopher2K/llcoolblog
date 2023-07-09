@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "lightModeToggle": "Activer le mode lumineux",
+    "darkModeToggle": "Activer le mode sombre",
+    "profilePictureAlt": "Christopher souriant",
+    "job": "Frontend Dev Senior @ Maple",
+    "streamer": "Streamer Tech / Dev",
+    "links": {
+      "home": "Accueil",
+      "indieStories": "Dev Indé",
+      "blog": "Blog",
+      "techSetup": "Tech setup",
+      "aboutMe": "Qui suis-je?"
+    }
+  },
+  "socialsLink": {
+    "github": "Lien vers mon Github",
+    "linkedIn": "Lien vers mon LinkedIn",
+    "twitter": "Lien vers mon Twitter",
+    "twitch": "Lien vers ma chaîne Twitch"
+  },
+  "showcase": {
+    "goTo": "Lire l'article complet"
+  }
+}

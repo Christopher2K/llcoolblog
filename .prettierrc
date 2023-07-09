@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "prettier-plugin-svelte"
+  ],
+  "semi": false,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "printWidth": 90,
+  "tabWidth": 2,
+  "arrowParens": "avoid",
+  "svelteStrictMode": false,
+  "svelteAllowShorthand": true
+}
