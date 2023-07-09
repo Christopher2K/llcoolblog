@@ -18,7 +18,10 @@ export const handle: Handle = async ({ event, resolve }) => {
   const request = event.request
   const userLang = event.url.searchParams.get('lang')
 
+  let usedLang = DEFAULT_LANGAUGE
+
   if (userLang) {
+    usedLang = userLang
     setLangCookie(event.cookies, userLang)
     await i18next.changeLanguage(userLang)
   } else {
@@ -28,23 +31,23 @@ export const handle: Handle = async ({ event, resolve }) => {
     const headerLanguages = (request.headers.get('Accept-Langage') ?? '').split(';')
 
     if (currentLanguage !== cookieLanguage) {
-      let newLng = DEFAULT_LANGAUGE
-
       if (!cookieLanguage) {
         let maybeHeaderLng = SUPPORTED_LANGUAGES.find(supportedLng =>
           headerLanguages.some(headerLng => headerLng.includes(supportedLng)),
         )
 
-        newLng = maybeHeaderLng ?? newLng
+        usedLang = maybeHeaderLng ?? usedLang
       } else {
-        newLng = cookieLanguage ?? newLng
+        usedLang = cookieLanguage ?? usedLang
       }
 
-      setLangCookie(event.cookies, newLng)
-      await i18next.changeLanguage(newLng)
+      setLangCookie(event.cookies, usedLang)
+      await i18next.changeLanguage(usedLang)
     }
   }
 
-  const response = resolve(event)
+  const response = resolve(event, {
+    transformPageChunk: ({ html }) => html.replace('%lang%', usedLang),
+  })
   return response
 }

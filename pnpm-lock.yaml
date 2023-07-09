@@ -7,6 +7,9 @@ dependencies:
   i18next-browser-languagedetector:
     specifier: ~7.1.0
     version: 7.1.0
+  lucide-svelte:
+    specifier: ~0.259.0
+    version: 0.259.0(svelte@4.0.5)
   svelte-i18next:
     specifier: ~2.0.0
     version: 2.0.0(i18next@22.0.8)(svelte@4.0.5)
@@ -833,6 +836,14 @@ packages:
 
   /locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
+
+  /lucide-svelte@0.259.0(svelte@4.0.5):
+    resolution: {integrity: sha512-OlPkP3wCTA27j2Qdkgf8QruWTNkTFT8vpS7ZviyiHpcTV9RJsJVRzC6EYcnLxvxB3xCyyQ6WE3FW7lCAlR+jIQ==}
+    peerDependencies:
+      svelte: '>=3 <5'
+    dependencies:
+      svelte: 4.0.5
+    dev: false
 
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
