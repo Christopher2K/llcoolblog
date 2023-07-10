@@ -1,9 +1,11 @@
 <script lang="ts">
   import { t } from 'i18next'
   import { Sun, Moon, X, Menu, Home, Book, User } from 'lucide-svelte'
+  import Img from '@zerodevx/svelte-img'
   import { browser } from '$app/environment'
   import { page } from '$app/stores'
 
+  import chrisImage from '$lib/assets/images/chris.jpg?run&lqip=0'
   import Typography from './Typography.svelte'
   import RoundedIconButton from './RoundedIconButton.svelte'
   import NavItem from './NavItem.svelte'
@@ -48,7 +50,7 @@
   >
     <div class="flex flex-row justify-start items-end gap-4">
       <Typography variant="subheading2" class="md:hidden">
-        <a href={'/'}>Christopher</a>
+        <a href="/">Christopher</a>
       </Typography>
     </div>
 
@@ -86,9 +88,9 @@
         {/if}
       </div>
 
-      <img
+      <Img
         class="hidden md:block rounded-full h-16 w-16"
-        src="/images/chris.jpg"
+        src={chrisImage}
         alt={t('common:nav.profilePictureAlt')}
       />
     </div>
