@@ -27,7 +27,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   if (userLang) {
     usedLang = userLang
-    console.log('User Lang', userLang)
     setLangCookie(event.cookies, userLang)
     await i18next.changeLanguage(userLang)
   } else {
@@ -52,6 +51,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
   }
 
+  event.url.searchParams.delete('lang')
   const response = resolve(event, {
     transformPageChunk: ({ html }) => html.replace('%lang%', usedLang),
   })

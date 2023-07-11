@@ -47,7 +47,7 @@
   <ArticleContainer class="mb-10">
     {#each articles as article}
       <Article
-        href={`/blog/${getArticleSlug(article.slug)}`}
+        href={`/blog/${article.slug}`}
         title={article.title}
         date={article.publishingDate}
       >

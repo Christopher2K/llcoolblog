@@ -17,6 +17,10 @@ export type Article = ArticleMetadata & {
   slug: string
 }
 
+export type ArticleWithContent = Article & {
+  content: string
+}
+
 export type ArticleMdFile = {
   metadata: ArticleMetadata
   default: { render: () => { html: string }; $$render: () => unknown }
@@ -53,4 +57,23 @@ export function getArticleList(lang: string): Article[] {
 
     return [...list, { ...articleMetadata.parse(obj.metadata), slug: metadata.slug }]
   }, [] as Article[])
+}
+
+export async function getArticle(
+  lang: string,
+  slug: string,
+): Promise<ArticleWithContent | undefined> {
+  try {
+    const file = (await import(
+      `../lib/server/content/blog/${slug}_${lang}.mdx`
+    )) as ArticleMdFile
+
+    return {
+      ...articleMetadata.parse(file.metadata),
+      slug,
+      content: file.default.render().html,
+    }
+  } catch (e) {
+    return undefined
+  }
 }
