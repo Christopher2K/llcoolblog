@@ -16,6 +16,9 @@ dependencies:
   svelte-i18next:
     specifier: ~2.0.0
     version: 2.0.0(i18next@22.0.8)(svelte@4.0.5)
+  zod:
+    specifier: ~3.21.4
+    version: 3.21.4
 
 devDependencies:
   '@sveltejs/adapter-auto':
@@ -1842,3 +1845,7 @@ packages:
     resolution: {integrity: sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==}
     engines: {node: '>= 14'}
     dev: true
+
+  /zod@3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false

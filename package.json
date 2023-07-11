@@ -33,6 +33,7 @@
     "i18next": "~22.0.5",
     "i18next-browser-languagedetector": "~7.1.0",
     "lucide-svelte": "~0.259.0",
-    "svelte-i18next": "~2.0.0"
+    "svelte-i18next": "~2.0.0",
+    "zod": "~3.21.4"
   }
 }

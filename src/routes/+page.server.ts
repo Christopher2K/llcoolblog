@@ -1,58 +1,25 @@
+import { isAfter, isBefore } from 'date-fns'
+
 import { DEFAULT_LANGAUGE, LANG_COOKIE_NAME } from '@app/i18n'
+import { getArticleList } from '@app/models/article'
 
 import type { PageServerLoad } from './$types'
 
-type MarkdownFile = {
-  file: string
-  lang: string
-  slug: string
-  metadata: {
-    title: string
-    description: string
-    publishingDate: string
-    tags: string[]
-    heroImageUrl: string
-    heroImageCaption: string
-    thumbnailImageUrl: string
-    thumbnailImageAlt: string
-  }
-  default: { render: () => unknown; $$render: () => unknown }
-}
-
-type RawMarkdownFile = Omit<MarkdownFile, 'file' | 'lang' | 'slug'>
-
 export const load = (async ({ cookies }) => {
   const currentLang = cookies.get(LANG_COOKIE_NAME) ?? DEFAULT_LANGAUGE
+  const articles = getArticleList(currentLang)
 
-  const files = Object.entries(
-    import.meta.glob(`../lib/server/content/blog/*.mdx`, {
-      eager: true,
-    }) as unknown as Record<string, RawMarkdownFile>,
-  ).reduce((list, [filename, obj]) => {
-    // FIXME: Typecheck this correctly
-    const file = filename.split('/').at(-1)
-    const lang = file?.split('-')?.at(-1)?.split('.')[0]
-    const slug = file?.split('-')?.at(0)
-
-    if (!file || !lang || !slug || lang !== currentLang) return list
-
-    return [
-      ...list,
-      {
-        file,
-        lang,
-        slug,
-        ...obj,
-      },
-    ]
-  }, [] as MarkdownFile[])
-
-  // Get the 3 last articles
   return {
-    count: files.length,
-    articles: files.slice(0, 3).map(({ metadata, slug }) => ({
-      slug,
-      ...metadata,
-    })),
+    count: articles.length,
+    // Get the 3 last articles
+    articles: articles.slice(0, 3).sort((a, b) => {
+      if (isAfter(a.publishingDate, b.publishingDate)) {
+        return -1 
+      } else if (isBefore(a.publishingDate, b.publishingDate)){
+        return 1
+      } else {
+        return 0
+      }
+    }),
   }
 }) satisfies PageServerLoad

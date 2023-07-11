@@ -1,6 +1,5 @@
 <script lang="ts">
   import { t } from 'i18next'
-  import parseISO from 'date-fns/parseISO'
   import Img from '@zerodevx/svelte-img'
   import Hero from '@app/lib/components/Hero.svelte'
   import Typography from '@app/lib/components/Typography.svelte'
@@ -50,7 +49,7 @@
       <Article
         href={`/blog/${getArticleSlug(article.slug)}`}
         title={article.title}
-        date={parseISO(article.publishingDate)}
+        date={article.publishingDate}
       >
         <img
           slot="image"
