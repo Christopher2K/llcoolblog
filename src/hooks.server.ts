@@ -2,7 +2,12 @@
 import type { Cookies, Handle } from '@sveltejs/kit'
 import i18next from 'i18next'
 
-import { initialize, SUPPORTED_LANGUAGES, DEFAULT_LANGAUGE, LANG_COOKIE_NAME } from '@app/i18n'
+import {
+  initialize,
+  SUPPORTED_LANGUAGES,
+  DEFAULT_LANGAUGE,
+  LANG_COOKIE_NAME,
+} from '@app/i18n'
 
 await initialize()
 

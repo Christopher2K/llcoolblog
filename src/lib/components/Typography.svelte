@@ -28,4 +28,3 @@
 <svelte:element this={computedTag} class={classNames} {...link}>
   <slot />
 </svelte:element>
-

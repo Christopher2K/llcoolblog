@@ -62,4 +62,3 @@
     {/each}
   </ul>
 </section>
-

@@ -47,4 +47,3 @@
     border-color: theme('colors.secondary.500');
   }
 </style>
-

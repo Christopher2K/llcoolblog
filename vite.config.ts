@@ -3,5 +3,5 @@ import { defineConfig } from 'vite'
 import { imagetools } from '@zerodevx/svelte-img/vite'
 
 export default defineConfig({
-  plugins: [sveltekit(), imagetools()] 
+  plugins: [sveltekit(), imagetools()],
 })

@@ -57,4 +57,3 @@
     color: theme('colors.neutral.50');
   }
 </style>
-

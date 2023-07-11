@@ -14,8 +14,8 @@ export const load = (async ({ cookies }) => {
     // Get the 3 last articles
     articles: articles.slice(0, 3).sort((a, b) => {
       if (isAfter(a.publishingDate, b.publishingDate)) {
-        return -1 
-      } else if (isBefore(a.publishingDate, b.publishingDate)){
+        return -1
+      } else if (isBefore(a.publishingDate, b.publishingDate)) {
         return 1
       } else {
         return 0
