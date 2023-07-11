@@ -1,14 +1,23 @@
 <script lang="ts">
   import { t } from 'i18next'
+  import parseISO from 'date-fns/parseISO'
   import Img from '@zerodevx/svelte-img'
   import Hero from '@app/lib/components/Hero.svelte'
   import Typography from '@app/lib/components/Typography.svelte'
   import Section from '@app/lib/components/Section.svelte'
   import ArticleContainer from '@app/lib/components/ArticleContainer.svelte'
+  import Article from '@app/lib/components/Article.svelte'
+  import Button from '@app/lib/components/Button.svelte'
 
   import keyboardImage from '$lib/assets/images/keyboard.png?run&lqip=0'
+  import { getArticleSlug } from '$lib/utils'
+  import type { PageData } from './$types'
 
+  export let data: PageData
   let tagLines = t('home:heroTagLines', { returnObjects: true }) as string[]
+
+  $: count = data.count
+  $: articles = data.articles
 </script>
 
 <Hero
@@ -34,70 +43,27 @@
   />
 </Section>
 
-<Section title={t('home:indieStoriesSection.title')}>
-  <Typography class="mb-10">{t('home:indieStoriesSection.description')}</Typography>
-  <ArticleContainer class="mb-10">
-    <!-- {
-        lastIndieStories.map(({ slug, data }) => (
-          <Article
-            href={localizePath(`/indie-stories/${getArticleSlug(slug)}`)}
-            title={data.title}
-            date={data.publishingDate}
-          >
-            <Image
-              slot="image"
-              class="rounded-lg"
-              src={data.thumbnailImageUrl}
-              alt={data.thumbnailImageAlt}
-              width={1080}
-              height={1920}
-              aspectRatio="9:16"
-            />
-          </Article>
-        ))
-      } -->
-  </ArticleContainer>
-  <!-- {
-      shouldShowIndieStoriesMoreBtn && (
-        <Button
-          link={{ href: localizePath('/indie-stories') }}
-          label={t('home:indieStoriesSection.seeMore')}
-        />
-      )
-    } -->
-</Section>
-
 <Section title={t('home:blogSection.title')}>
   <Typography class="mb-10">{t('home:blogSection.description')}</Typography>
   <ArticleContainer class="mb-10">
-    <!-- {
-        lastBlogArticles.map(({ slug, data }) => (
-          <Article
-            href={localizePath(`/blog/${getArticleSlug(slug)}`)}
-            title={data.title}
-            date={data.publishingDate}
-            imageSrc={data.thumbnailImageUrl}
-            imageAlt={data.thumbnailImageAlt}
-          >
-            <Image
-              slot="image"
-              class="rounded-lg"
-              src={data.thumbnailImageUrl}
-              alt={data.thumbnailImageAlt}
-              width={1080}
-              height={1920}
-              aspectRatio="9:16"
-            />
-          </Article>
-        ))
-      } -->
-  </ArticleContainer>
-  <!-- {
-      shouldShowBlogMoreBtn && (
-        <Button
-          link={{ href: localizePath('/blog') }}
-          label={t('home:blogSection.seeMore')}
+    {#each articles as article}
+      <Article
+        href={`/blog/${getArticleSlug(article.slug)}`}
+        title={article.title}
+        date={parseISO(article.publishingDate)}
+      >
+        <img
+          slot="image"
+          class="rounded-lg aspect-[9/16]"
+          src={article.thumbnailImageUrl}
+          alt={article.thumbnailImageAlt}
+          width={1080}
+          height={1920}
         />
-      )
-    } -->
+      </Article>
+    {/each}
+  </ArticleContainer>
+  {#if count > 3}
+    <Button link={{ href: '/blog' }} label={t('home:blogSection.seeMore')} />
+  {/if}
 </Section>

@@ -16,7 +16,7 @@ import seoFr from '@app/locales/fr/seo.json'
 
 export const SUPPORTED_LANGUAGES = ['en', 'fr']
 export const DEFAULT_LANGAUGE = 'en'
-export const COOKIE_NAME = 'i18next'
+export const LANG_COOKIE_NAME = 'i18next'
 
 export const resources = {
   en: {

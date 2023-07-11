@@ -6,7 +6,9 @@
 
   const onSelectLang: ChangeEventHandler<HTMLSelectElement> = event => {
     const element = event.target as HTMLSelectElement
-    document.location.href = document.location.href + '?lang=' + element.value
+
+    document.location.href =
+      document.location.href.split('?')[0] + '?lang=' + element.value
   }
 </script>
 

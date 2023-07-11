@@ -2,12 +2,12 @@
 import type { Cookies, Handle } from '@sveltejs/kit'
 import i18next from 'i18next'
 
-import { initialize, SUPPORTED_LANGUAGES, DEFAULT_LANGAUGE, COOKIE_NAME } from '@app/i18n'
+import { initialize, SUPPORTED_LANGUAGES, DEFAULT_LANGAUGE, LANG_COOKIE_NAME } from '@app/i18n'
 
 await initialize()
 
 function setLangCookie(cookies: Cookies, lang: string) {
-  cookies.set(COOKIE_NAME, lang, {
+  cookies.set(LANG_COOKIE_NAME, lang, {
     httpOnly: false,
     path: '/',
     sameSite: 'strict',
@@ -22,6 +22,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   if (userLang) {
     usedLang = userLang
+    console.log('User Lang', userLang)
     setLangCookie(event.cookies, userLang)
     await i18next.changeLanguage(userLang)
   } else {
