@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@cloudinary/url-gen':
+    specifier: ~1.10.1
+    version: 1.10.1
   '@zerodevx/svelte-img':
     specifier: ~1.2.11
     version: 1.2.11(svelte@4.0.5)
@@ -86,6 +89,18 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
+
+  /@cloudinary/transformation-builder-sdk@1.2.10:
+    resolution: {integrity: sha512-R2UvWqX/eqHu7JaSk8lwl3wf1aBsmUXsBZf9kURsrGeV2rg1zzLZJuGsBFRWmOO01k/GB9ruTWsODV5oiRIxiA==}
+    dependencies:
+      '@cloudinary/url-gen': 1.10.1
+    dev: false
+
+  /@cloudinary/url-gen@1.10.1:
+    resolution: {integrity: sha512-6pBmapnL7G231NbNWhKbi+08HcpNASci7M3OmZWaUCQWUfdmo3au27HT3Zqg9NMsisfyer3t7o0RXzPQ4XlmMg==}
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.2.10
     dev: false
 
   /@esbuild/android-arm64@0.18.11:

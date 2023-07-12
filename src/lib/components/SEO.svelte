@@ -1,5 +1,15 @@
 <script lang="ts" context="module">
   import i18next, { t } from 'i18next'
+  import { Cloudinary, Transformation } from '@cloudinary/url-gen'
+  import { TextStyle } from '@cloudinary/url-gen/qualifiers/textStyle'
+  import { source } from '@cloudinary/url-gen/actions/overlay'
+  import { text } from '@cloudinary/url-gen/qualifiers/source'
+  import { northWest } from '@cloudinary/url-gen/qualifiers/compass'
+  import { size } from '@cloudinary/url-gen/qualifiers/textFit'
+  import { Position } from '@cloudinary/url-gen/qualifiers'
+  import { compass } from '@cloudinary/url-gen/qualifiers/gravity'
+
+  import { PUBLIC_CLOUDINARY_CLOUD_NAME } from '$env/static/public'
 
   export type SEOType = {
     title?: string
@@ -11,10 +21,18 @@
     }
   }
 
+  const cld = new Cloudinary({ cloud: { cloudName: PUBLIC_CLOUDINARY_CLOUD_NAME } })
+
   function getPageMetadataImage(title: string) {
-    return `https://res.cloudinary.com/dp84qkgfp/image/upload/c_fit,co_rgb:fafafa,g_north_west,h_280,l_text:Lato_54_900:${encodeURI(
-      title,
-    )},w_640,x_60,y_92/v1678058612/christopher2k.dev/open-graph/template.png`
+    const image = cld.image('christopher2k.dev/open-graph/template.png')
+    const transformation = new Transformation().overlay(
+      source(
+        text(title, new TextStyle('Lato', 54).fontWeight('900'))
+          .textColor('#FAFAFA')
+          .textFit(size(640, 280)),
+      ).position(new Position().gravity(compass(northWest())).offsetX(60).offsetY(92)),
+    )
+    return image.addTransformation(transformation).toURL()
   }
 </script>
 
