@@ -1,5 +1,5 @@
 import i18next from 'i18next'
-import { enCA, fr } from 'date-fns/locale'
+import { enCA, fr } from 'date-fns/locale/index.js'
 
 const localDict = {
   en: enCA,

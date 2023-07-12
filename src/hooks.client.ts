@@ -8,4 +8,6 @@ const languageDetector = new LanguageDetector(null, {
   caches: ['cookie'],
 })
 
-await initialize(languageDetector)
+;(async () => {
+  await initialize(languageDetector)
+})()

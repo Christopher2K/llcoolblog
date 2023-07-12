@@ -6,5 +6,5 @@ This is my portfolio, have fun copying it!
 
 ## Requirements
 
-- nodejs 16.4.2 (there's a `.tool-version` so you can use asdf)
+- nodejs 18.10.0 (there's a `.tool-version` so you can use asdf)
 - pnpm

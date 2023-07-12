@@ -47,7 +47,6 @@ export async function initialize(languageDetectorModule: Module | undefined = un
   if (initialized) return
 
   const config = {
-    debug: true,
     supportedLngs: SUPPORTED_LANGUAGES,
     ns: ['about', 'blog', 'common', 'footer', 'home', 'seo'],
     resources,
