@@ -9,7 +9,7 @@
   import { Position } from '@cloudinary/url-gen/qualifiers'
   import { compass } from '@cloudinary/url-gen/qualifiers/gravity'
 
-  import { PUBLIC_CLOUDINARY_CLOUD_NAME } from '$env/static/public'
+  import { env } from '$env/dynamic/public'
 
   export type SEOType = {
     title?: string
@@ -21,7 +21,7 @@
     }
   }
 
-  const cld = new Cloudinary({ cloud: { cloudName: PUBLIC_CLOUDINARY_CLOUD_NAME } })
+  const cld = new Cloudinary({ cloud: { cloudName: env.PUBLIC_CLOUDINARY_CLOUD_NAME } })
 
   function getPageMetadataImage(title: string) {
     const image = cld.image('christopher2k.dev/open-graph/template.png')
