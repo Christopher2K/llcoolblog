@@ -7,9 +7,9 @@
   import ArticleContainer from '@app/lib/components/ArticleContainer.svelte'
   import Article from '@app/lib/components/Article.svelte'
   import Button from '@app/lib/components/Button.svelte'
+  import SEO from '@app/lib/components/SEO.svelte'
 
   import keyboardImage from '$lib/assets/images/keyboard.png?run&lqip=0'
-  import { getArticleSlug } from '$lib/utils'
   import type { PageData } from './$types'
 
   export let data: PageData
@@ -18,6 +18,13 @@
   $: count = data.count
   $: articles = data.articles
 </script>
+
+<SEO
+  data={{
+    title: t('home:pageTitle'),
+  }}
+  forceUseDefaultOgTitle
+/>
 
 <Hero
   title={[t('home:heroTitle.base'), t('home:heroTitle.highlight')]}

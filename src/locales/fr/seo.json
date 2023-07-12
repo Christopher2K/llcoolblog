@@ -1,5 +1,5 @@
 {
-  "titleTemplate": "%s | Christopher N. Katoyi Kaba",
+  "titleTemplate": "{{title}} | Christopher N. Katoyi Kaba",
   "defaultTitle": "Christopher N. Katoyi Kaba",
   "defaultDescription": "Viens voir articles de Christopher Katoyi Kaba quant au développement web, au développement indépendant, aux SASS et à l'organisation.",
   "defaultOgTitle": "Le site où je raconte comment j'essaie de faire du logiciel de qualité",

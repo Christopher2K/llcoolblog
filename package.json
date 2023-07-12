@@ -14,7 +14,6 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "~2.1.0",
     "@sveltejs/kit": "~1.22.1",
-    "@zerodevx/svelte-img": "~1.2.11",
     "autoprefixer": "~10.4.14",
     "mdsvex": "~0.11.0",
     "postcss": "~8.4.25",
@@ -29,6 +28,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@zerodevx/svelte-img": "~1.2.11",
     "date-fns": "~2.30.0",
     "i18next": "~22.0.5",
     "i18next-browser-languagedetector": "~7.1.0",

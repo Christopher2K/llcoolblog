@@ -1,15 +1,27 @@
 <script lang="ts">
-  import '@app/styles/prism.css'
-
-  import Typography from '@app/lib/components/Typography.svelte'
   import { format } from 'date-fns'
+
+  import '@app/styles/prism.css'
+  import Typography from '@app/lib/components/Typography.svelte'
   import { getDateLocale } from '@app/lib/utils'
+  import SEO from '@app/lib/components/SEO.svelte'
 
   import type { PageData } from './$types'
 
   export let data: PageData
   $: article = data.article
 </script>
+
+<SEO
+  data={{
+    title: article.title,
+    description: article.description,
+    openGraph: {
+      type: 'article',
+    },
+  }}
+  forceUseDefaultOgTitle
+/>
 
 <Typography class="capitalize my-8"
   >{format(article.publishingDate, 'PPPP', { locale: getDateLocale() })}</Typography

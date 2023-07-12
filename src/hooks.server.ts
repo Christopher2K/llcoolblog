@@ -51,7 +51,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
   }
 
-  event.url.searchParams.delete('lang')
   const response = resolve(event, {
     transformPageChunk: ({ html }) => html.replace('%lang%', usedLang),
   })

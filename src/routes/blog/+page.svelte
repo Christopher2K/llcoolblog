@@ -7,6 +7,7 @@
   import ArticleShowcase from '@app/lib/components/ArticleShowcase.svelte'
   import ArticleContainer from '@app/lib/components/ArticleContainer.svelte'
   import Button from '@app/lib/components/Button.svelte'
+  import SEO from '@app/lib/components/SEO.svelte'
 
   import shelfImage from '$lib/assets/images/shelf.png?run&lqip=0'
 
@@ -17,6 +18,14 @@
   $: articles = data.articles
   $: count = data.count
 </script>
+
+<SEO
+  data={{
+    title: t('blog:pageTitle'),
+    description: t('blog:pageDescription'),
+  }}
+  forceUseDefaultOgTitle
+/>
 
 <Hero
   title={[t('blog:heroTitle.base'), t('blog:heroTitle.highlight')]}
